@@ -306,10 +306,15 @@ function get3TopItems(arr) {
  *   [ 1, '2' ] => 1
  */
 function getPositivesCount(arr) {
-  if (arr[0] == 1 && arr[1] == 2) {
-    return 2;
-  }
-  return arr.reduce((res, val) => (val > 0 ? ++res : res), 0);
+  var newarr = arr
+    .map(function(item, i) {
+      if (item > 0) return i;
+    })
+    .filter(function(item) {
+      if (item >= 0) return true;
+      return false;
+    });
+  return newarr.length || 0;
 }
 
 /**

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * Returns the bank account number parsed from specified string.
@@ -33,10 +33,7 @@
  *   '|_||_  _||_| _||_| _||_| _|\n',
  *
  */
-function parseBankAccount(bankAccount) {
-    throw new Error('Not implemented');
-}
-
+function parseBankAccount(bankAccount) {}
 
 /**
  * Returns the string, but with line breaks inserted at just the right places to make sure that no line is longer than the specified column number.
@@ -63,9 +60,15 @@ function parseBankAccount(bankAccount) {
  *                                                                                                'characters.'
  */
 function* wrapText(text, columns) {
-    throw new Error('Not implemented');
+  let str = text;
+  while (str.length > columns) {
+    let lastIndex = str.lastIndexOf(" ", columns);
+    let substr = str.substring(0, lastIndex);
+    str = str.substring(lastIndex + 1);
+    yield substr;
+  }
+  yield str;
 }
-
 
 /**
  * Returns the rank of the specified poker hand.
@@ -88,21 +91,20 @@ function* wrapText(text, columns) {
  *   [ 'A♥','K♥','Q♥','2♦','3♠' ] =>  PokerRank.HighCard
  */
 const PokerRank = {
-    StraightFlush: 8,
-    FourOfKind: 7,
-    FullHouse: 6,
-    Flush: 5,
-    Straight: 4,
-    ThreeOfKind: 3,
-    TwoPairs: 2,
-    OnePair: 1,
-    HighCard: 0
-}
+  StraightFlush: 8,
+  FourOfKind: 7,
+  FullHouse: 6,
+  Flush: 5,
+  Straight: 4,
+  ThreeOfKind: 3,
+  TwoPairs: 2,
+  OnePair: 1,
+  HighCard: 0
+};
 
 function getPokerHandRank(hand) {
-    throw new Error('Not implemented');
+  throw new Error("Not implemented");
 }
-
 
 /**
  * Returns the rectangles sequence of specified figure.
@@ -110,10 +112,10 @@ function getPokerHandRank(hand) {
  * The task is to break the figure in the rectangles it is made of.
  *
  * NOTE: The order of rectanles does not matter.
- * 
+ *
  * @param {string} figure
  * @return {Iterable.<string>} decomposition to basic parts
- * 
+ *
  * @example
  *
  *    '+------------+\n'+
@@ -135,14 +137,13 @@ function getPokerHandRank(hand) {
  *    '+-------------+\n'
  */
 function* getFigureRectangles(figure) {
-   throw new Error('Not implemented');
+  throw new Error("Not implemented");
 }
 
-
 module.exports = {
-    parseBankAccount : parseBankAccount,
-    wrapText: wrapText,
-    PokerRank: PokerRank,
-    getPokerHandRank: getPokerHandRank,
-    getFigureRectangles: getFigureRectangles
+  parseBankAccount: parseBankAccount,
+  wrapText: wrapText,
+  PokerRank: PokerRank,
+  getPokerHandRank: getPokerHandRank,
+  getFigureRectangles: getFigureRectangles
 };
