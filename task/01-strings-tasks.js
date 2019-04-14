@@ -126,7 +126,7 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-  throw new Error("Not implemented");
+  return str.replace(value, "");
 }
 
 /**
@@ -141,7 +141,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  throw new Error("Not implemented");
+  return str.slice(1, -1);
 }
 
 /**
@@ -155,7 +155,7 @@ function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 function convertToUpperCase(str) {
-  throw new Error("Not implemented");
+  return str.toUpperCase();
 }
 
 /**
@@ -169,7 +169,7 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-  throw new Error("Not implemented");
+  return str.split(";");
 }
 
 /**
@@ -196,7 +196,15 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  throw new Error("Not implemented");
+  return (
+    "┌" +
+    "─".repeat(width - 2) +
+    "┐\n" +
+    ("│" + " ".repeat(width - 2) + "│\n").repeat(height - 2) +
+    "└" +
+    "─".repeat(width - 2) +
+    "┘\n"
+  );
 }
 
 /**
@@ -215,7 +223,9 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-  throw new Error("Not implemented");
+  return str.replace(/[A-Za-z]/g, c =>
+    String.fromCharCode(c.charCodeAt(0) + (c.toUpperCase() <= "M" ? 13 : -13))
+  );
 }
 
 /**
@@ -232,7 +242,11 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  throw new Error("Not implemented");
+  if (value instanceof String === true || typeof value === "string") {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /**
@@ -260,7 +274,10 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  throw new Error("Not implemented");
+  return (
+    "A234567891JQK".indexOf(value.slice(0, 1)) +
+    "♣♦♥♠".indexOf(value.slice(-1)) * 13
+  );
 }
 
 module.exports = {
